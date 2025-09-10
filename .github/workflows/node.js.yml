@@ -27,6 +27,6 @@ jobs:
       - name: Deploy to gh-pages branch
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-page # 目標分支
+          branch: gh-pages # 目標分支
           folder: dist # 構建輸出目錄，根據你的專案調整（可能是 build 或 dist）
           token: ${{ secrets.GITHUB_TOKEN }} # 使用 GitHub 提供的 token
