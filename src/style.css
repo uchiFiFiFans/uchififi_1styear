@@ -2,6 +2,15 @@ html {
   cursor: url("/fiMonster.png"), auto;
   font-family: "Courier New", Courier, monospace;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  line-height: 1;
+}
 
 a {
   text-decoration: none;
@@ -35,8 +44,11 @@ header.navbar {
       height: 36px;
     }
   }
-  a {
+  a h1 {
+    font-weight: bold;
+    line-height: 1;
     font-size: 36px;
+    margin-bottom: 0;
     @media (max-width: 768px) {
       font-size: 24px;
     }
@@ -118,9 +130,12 @@ header.navbar {
   .description {
     max-width: 720px;
     .title {
-      font-size: 24px;
+      font-size: 32px;
       font-weight: bolder;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
+      @media (max-width: 768px) {
+        font-size: 24px;
+      }
     }
     .content {
       display: flex;
