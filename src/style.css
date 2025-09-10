@@ -1,0 +1,175 @@
+html {
+  cursor: url("/fiMonster.png"), auto;
+  font-family: "Courier New", Courier, monospace;
+}
+
+a {
+  text-decoration: none;
+  color: #fd914f;
+  font-weight: bolder;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+pre {
+  font-size: 18px;
+}
+
+header.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  background-color: #ffffff;
+  padding: 0;
+  .container-fluid {
+    justify-content: center;
+  }
+  img {
+    width: 56px;
+    height: 56px;
+    @media (max-width: 768px) {
+      width: 36px;
+      height: 36px;
+    }
+  }
+  a {
+    font-size: 36px;
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
+  }
+  img.fifiDu_2 {
+    transform: scaleX(-1);
+  }
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100dvh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.bus-area,
+.info-area,
+.thank-area {
+  width: 100%;
+  max-width: 1320px;
+  padding: 120px 20px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  @media (max-width: 768px) {
+    padding: 60px 10px;
+  }
+}
+
+.divider {
+  width: 100%;
+  height: 2px;
+  background-color: #fd914f;
+}
+
+.area-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+  .area {
+    width: 240px;
+    padding: 10px;
+    border: 1px solid #fd914faa;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px #fd914f99; /* 新增陰影效果 */
+    gap: 5px;
+    .area-title {
+      font-size: 20px;
+      font-weight: bolder;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.info-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 20px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+  .description {
+    max-width: 720px;
+    .title {
+      font-size: 24px;
+      font-weight: bolder;
+      margin-bottom: 10px;
+    }
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      .sub-title {
+        font-size: 20px;
+        font-weight: bolder;
+      }
+    }
+    .social_link {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      @media (max-width: 768px) {
+        margin-left: 25%;
+      }
+      gap: 10px;
+      font-size: 20px;
+      img {
+        width: 48px;
+        height: 48px;
+      }
+    }
+  }
+}
+
+.thank-title {
+  font-size: 36px;
+  font-weight: bolder;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.thank-area ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  li {
+    font-size: 20px;
+  }
+}
+
+.footer {
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  background-color: #222;
+  color: #fff;
+  font-size: 14px;
+}
