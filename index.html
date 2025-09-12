@@ -115,7 +115,7 @@
       <div class="divider"></div>
       <div class="thank-area">
         <div class="thank-title">特別感謝</div>
-        <ul>
+        <ul class="teachers">
           <li>
             導覽列扉比獸小圖：<a href="https://x.com/violetkitty_ttv"
               >芓芓老師</a
@@ -129,6 +129,30 @@
             >
           </li>
         </ul>
+        <div class="thank-sub-title">以及一同奮鬥的同伴們</div>
+        <ul class="friends">
+          <li>瑞修</li>
+          <li>Martil</li>
+          <li>丹丹</li>
+          <li>Skrey</li>
+          <li>千白</li>
+          <li>矣諾</li>
+          <li>控醬</li>
+          <li>呆呆小將</li>
+          <li>阿佩</li>
+          <li>阿嗚</li>
+          <li>癲末</li>
+          <li>汐汐玖</li>
+          <li>SCC</li>
+          <li>威廉</li>
+          <li>熊貓</li>
+          <li>AngryCHOPPER</li>
+          <li>鄧肯</li>
+          <li>傳奇腦包</li>
+          <li>龜仙人</li>
+          <li>Fuyu</li>
+          <li>麻將</li>
+        </ul>
       </div>
       <div class="footer">
         <p>&copy; 2025 羽芝扉扉一周年應援組. All rights reserved.</p>
@@ -138,13 +162,43 @@
     <script>
       function getBusRoute() {
         fetch(
-          `https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLgJYx_kIHnHOzDukf-N0RyXNRZQSIJIMHe3yTtL9liWx2GcamHvc5DIZHK45aWzg_j-ia8NLTWTmif01lP_rq6A-FL4U46IwrO-Tec9xyigGYl8g434bzwzrdnGUNeaGBUvbDnPhwsOsiRI_Qz1cbv9-lkgyDZNqecrV5g8T3ZKYg8CMM7V8kqvV5pdUq1Vq1XYgXc8fJ9wUhrMsxBOC0qBcu5hLos7Y45s0JpCcynycFswAc73mnmA7-8DiR272ooOShG4FdKJ9dD_Fq4Xd0cM-7kikovlZt6gO8CE&lib=MHsrEjBkRPlPFtLM-XgOb75NdiOCFx2Gk`
+          `https://script.google.com/macros/s/AKfycbwN3yP3kXFpKsheNr7otcEvNbM6B9U5Ysn0RuadqFHPtQWAHA40SuSHInwLhj5U2JjUsg/exec`
         )
           .then((res) => {
             return res.json();
           })
           .then((data) => {
-            console.log(data);
+            const nowTime = new Date().getTime();
+            data.data.forEach((route, index) => {
+              if (index === 0) return;
+              const area = document.querySelector(`.a${index}`);
+              if (area) {
+                const plate = area.querySelector(".area-plate");
+                const routeInfo = area.querySelector(".area-route");
+                const link = area.querySelector(".area-link a");
+                const isLate = (nowTime - route[3]) / 1000 / 60 > 15; // 超過15分鐘沒更新
+                if (plate)
+                  plate.textContent = `車牌：${route[1]} / ${
+                    isLate ? "已離線" : route[0]
+                  } / ${route[4] == "0" ? "去程" : "返程"}`;
+                if (routeInfo) {
+                  routeInfo.textContent = `路線：${route[2]}`;
+                }
+                if (link) {
+                  if (index === 1 && route[2].startsWith("307")) {
+                    link.href = `https://ebus.gov.taipei/EBus/VsSimpleMap?routeid=0100030700&amp;gb=${route[4]}`;
+                  } else if (index === 1) {
+                    link.href = `https://ebus.gov.taipei/EBus/`;
+                  } else if (index === 2) {
+                    link.href = `https://citybus.taichung.gov.tw/`;
+                  } else if (index === 3 && route[5]) {
+                    link.href = `https://ibus.tbkc.gov.tw/ibus/driving-map/${route[5]}`;
+                  } else if (index === 3) {
+                    link.href = `https://ibus.tbkc.gov.tw/ibus/driving-map`;
+                  }
+                }
+              }
+            });
           });
       }
       getBusRoute();

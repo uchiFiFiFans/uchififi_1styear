@@ -101,7 +101,7 @@ header.navbar {
     align-items: center;
   }
   .area {
-    width: 240px;
+    width: 260px;
     padding: 10px;
     border: 1px solid #fd914faa;
     border-radius: 8px;
@@ -114,6 +114,9 @@ header.navbar {
       font-weight: bolder;
       text-align: center;
       margin-bottom: 5px;
+    }
+    .area-route {
+      height: 48px;
     }
   }
 }
@@ -149,9 +152,9 @@ header.navbar {
     .social_link {
       margin-top: 20px;
       display: flex;
-      flex-direction: column;
       @media (max-width: 768px) {
         margin-left: 25%;
+        flex-direction: column;
       }
       gap: 10px;
       font-size: 20px;
@@ -170,13 +173,31 @@ header.navbar {
   margin-bottom: 20px;
 }
 
-.thank-area ul {
+.thank-sub-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.thank-area .teachers {
   display: flex;
   flex-direction: column;
   gap: 10px;
   align-items: center;
   li {
     font-size: 20px;
+  }
+}
+.thank-area .friends {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 768px;
+  margin: 0 auto;
+  justify-content: center;
+  li {
+    font-size: 16px;
   }
 }
 
