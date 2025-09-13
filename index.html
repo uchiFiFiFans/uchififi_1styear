@@ -204,7 +204,12 @@
                 const direction = area.querySelector(".area-plate .direction");
                 const routeInfo = area.querySelector(".area-route");
                 const link = area.querySelector(".area-link a");
-                const isLate = (nowTime - route[3]) / 1000 / 3600 > 15; // 超過15分鐘沒更新
+                const isLate = (nowTime - route[3]) / 1000 / 60 > 15; // 超過15分鐘沒更新
+                console.log(
+                  nowTime,
+                  route[3],
+                  (nowTime - route[3]) / 1000 / 3600
+                );
                 if (plate) plate.textContent = `車牌：${route[1]}`;
                 if (isOnTime) {
                   isOnTime.textContent = `${isLate ? " (已離線) " : ""}`;
