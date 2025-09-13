@@ -32,8 +32,12 @@
         <div class="area-container">
           <div class="area a1">
             <div class="area-title">台北市公車</div>
-            <div class="area-plate">車牌：EAL-1156</div>
-            <div class="area-route">路線：307莒光往板橋前站</div>
+            <div class="area-plate">
+              <span class="plate">車牌：Loading</span>
+              <span class="isOnTime"></span>
+              <span class="direction"></span>
+            </div>
+            <div class="area-route">路線：Loading</div>
             <div class="area-link">
               <a href="https://ebus.gov.taipei/ebus" target="_blank"
                 >台北公車即時動態</a
@@ -42,8 +46,12 @@
           </div>
           <div class="area a2">
             <div class="area-title">台中市公車</div>
-            <div class="area-plate">車牌：KKA-6159</div>
-            <div class="area-route">路線：35</div>
+            <div class="area-plate">
+              <span class="plate">車牌：Loading</span>
+              <span class="isOnTime"></span>
+              <span class="direction"></span>
+            </div>
+            <div class="area-route">路線：Loading</div>
             <div class="area-link">
               <a href="https://citybus.taichung.gov.tw/" target="_blank"
                 >台中公車即時動態</a
@@ -52,8 +60,12 @@
           </div>
           <div class="area a3">
             <div class="area-title">高雄市公車</div>
-            <div class="area-plate">車牌：KKA-9139</div>
-            <div class="area-route">路線：27</div>
+            <div class="area-plate">
+              <span class="plate">車牌：Loading</span>
+              <span class="isOnTime"></span>
+              <span class="direction"></span>
+            </div>
+            <div class="area-route">路線：Loading</div>
             <div class="area-link">
               <a
                 href="https://ibus.tbkc.gov.tw/ibus/driving-map"
@@ -61,6 +73,9 @@
                 >高雄公車即時動態</a
               >
             </div>
+          </div>
+          <div class="update-time" style="width: 100%; text-align: center">
+            最後更新時間: XXXX/XX/XX XX:XX:XX
           </div>
         </div>
       </main>
@@ -121,14 +136,21 @@
         <div class="thank-title">特別感謝</div>
         <ul class="teachers">
           <li>
-            導覽列扉比獸小圖：<a href="https://x.com/violetkitty_ttv"
+            導覽列扉比獸小圖：<a
+              href="https://x.com/violetkitty_ttv"
+              target="_blank"
               >芓芓老師</a
             >
           </li>
-          <li>橫幅繪圖：<a href="https://x.com/linyifenDAGG">狼葛格老師</a></li>
+          <li>
+            橫幅繪圖：<a href="https://x.com/linyifenDAGG" target="_blank"
+              >狼葛格老師</a
+            >
+          </li>
           <li>
             形象圖：<a
               href="https://www.mihuashi.com/profiles/443212?role=painter&utm_source=direct&utm_campaign=userpage&utm_medium=share"
+              target="_blank"
               >luai老師</a
             >
           </li>
@@ -177,14 +199,21 @@
               if (index === 0) return;
               const area = document.querySelector(`.a${index}`);
               if (area) {
-                const plate = area.querySelector(".area-plate");
+                const plate = area.querySelector(".area-plate .plate");
+                const isOnTime = area.querySelector(".area-plate .isOnTime");
+                const direction = area.querySelector(".area-plate .direction");
                 const routeInfo = area.querySelector(".area-route");
                 const link = area.querySelector(".area-link a");
                 const isLate = (nowTime - route[3]) / 1000 / 60 > 15; // 超過15分鐘沒更新
-                if (plate)
-                  plate.textContent = `車牌：${route[1]} / ${
-                    isLate ? "已離線" : route[0]
-                  } / ${route[4] == "0" ? "去程" : "返程"}`;
+                if (plate) plate.textContent = `車牌：${route[1]}`;
+                if (isOnTime) {
+                  isOnTime.textContent = `${isLate ? " (已離線) " : ""}`;
+                }
+                if (direction) {
+                  direction.textContent = `${
+                    isLate ? "" : route[6] == "0" ? "去程" : "返程"
+                  }`;
+                }
                 if (routeInfo) {
                   routeInfo.textContent = `路線：${route[2]}`;
                 }
@@ -203,9 +232,15 @@
                 }
               }
             });
+            document.querySelector(".bus-area").style.userSelect = "auto";
+            document.querySelector(
+              ".update-time"
+            ).textContent = `最後更新時間: ${new Date(
+              nowTime
+            ).toLocaleString()}`;
           });
       }
-      getBusRoute();
+      setInterval(getBusRoute(), 1000 * 5);
     </script>
   </body>
 </html>

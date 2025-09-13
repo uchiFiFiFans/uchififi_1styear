@@ -71,6 +71,10 @@ header.navbar {
   z-index: -1;
 }
 
+.bus-area {
+  user-select: none;
+}
+
 .bus-area,
 .info-area,
 .thank-area {
@@ -117,6 +121,11 @@ header.navbar {
     }
     .area-route {
       height: 48px;
+    }
+    .area-plate {
+      .isOnTime {
+        color: #db2516;
+      }
     }
   }
 }
